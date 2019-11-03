@@ -13,5 +13,10 @@ task import: :environment do
       team_id: team.id,
     )
     Sport.find_or_create_by(name: row.to_hash['Sport'])
+    sport = Sport.find_by(name: row.to_hash['Sport'])
+    Event.find_or_create_by(
+      name: row.to_hash['Event'],
+      sport_id: sport.id
+    )
   end
 end
