@@ -12,5 +12,6 @@ task import: :environment do
       weight: row.to_hash['Weight'],
       team_id: team.id,
     )
+    Sport.find_or_create_by(name: row.to_hash['Sport'])
   end
 end
