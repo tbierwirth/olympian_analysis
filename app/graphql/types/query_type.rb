@@ -39,5 +39,15 @@ module Types
     def sports
       Sport.all.includes(:events)
     end
+
+    field :event, Types::EventType, null: false do
+      description "Return an event and associated medalists"
+
+      argument :id, ID, required: true
+    end
+
+    def event(id:)
+      Event.find(id)
+    end
   end
 end
