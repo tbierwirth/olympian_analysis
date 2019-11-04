@@ -4,9 +4,8 @@
 * [Introduction](#Introduction)
 * [Setup](#Setup)
 * [GraphQL Endpoint](#Endpoint)
-* [User Requests](#User-Requests)
-* [Trip Requests](#Trip-Requests)
-* [Emergency Contact Requests](#Emergency-Contact-Requests)
+* [Olympian Requests](#Olympian-Requests)
+* [Sport/Event Requests](#Sport/Event-Requests)
 * [Schema Diagram](#Schema-Diagram)
 * [Tech Stack](#Tech-Stack)
 * [Project Board](#Project-Board)
@@ -38,20 +37,6 @@ All requests should be made with a `POST` request to `/graphql?query=[request]`.
     team
     sport
     totalMedalsWon
-  }
-}
-```
-
-**Get Single User:**
-```
-query {
-  user(id: 1){
-    id
-    name
-    email
-    city
-    state
-    email
   }
 }
 ```
@@ -98,6 +83,7 @@ query {
 
 ```
 
+### Sport/Event Requests
 **All Sports/Events:**
 ```
 {
