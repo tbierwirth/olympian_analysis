@@ -39,4 +39,23 @@ describe "Olympians" do
     expect(olympian[:id].to_i).to eq(youngest.id)
     expect(olympian[:age].to_i).to eq(youngest.age)
   end
+
+  it "should return the oldest olympian" do
+    create(:olympian, age: 18)
+    oldest = create(:olympian, age: 30)
+    query = (
+      %(query {
+        oldestOlympian{
+          id
+          age
+        }
+        })
+    )
+    post "/graphql", params: { "query" => query }.to_json, headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+
+    olympian = JSON.parse(response.body, symbolize_names: true)[:data][:oldestOlympian]
+
+    expect(olympian[:id].to_i).to eq(oldest.id)
+    expect(olympian[:age].to_i).to eq(oldest.age)
+  end
 end
