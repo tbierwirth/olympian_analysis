@@ -96,6 +96,21 @@ All requests should be made with a `POST` request to `/graphql?query=[request]`.
 }
 ```
 
+**Medalists For Event**
+```
+{
+  event(id: 1){
+    name
+    medalists{
+      name
+      age
+      team
+      medal
+    }
+  }
+}
+```
+
 ### Schema Diagram
 ![Olympian_Analysis Schema](https://user-images.githubusercontent.com/46985326/68159237-4792a880-ff49-11e9-9f99-5d0684310405.png)
 
