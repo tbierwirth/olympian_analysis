@@ -5,7 +5,7 @@
 * [Setup](#Setup)
 * [GraphQL Endpoint](#Endpoint)
 * [Olympian Requests](#Olympian-Requests)
-* [Sport/Event Requests](#Sport/Event-Requests)
+* [Event Requests](#Event-Requests)
 * [Schema Diagram](#Schema-Diagram)
 * [Tech Stack](#Tech-Stack)
 * [Project Board](#Project-Board)
@@ -83,7 +83,7 @@ All requests should be made with a `POST` request to `/graphql?query=[request]`.
 
 ```
 
-### Sport/Event Requests
+### Event Requests
 **All Sports/Events:**
 ```
 {
