@@ -31,5 +31,21 @@ RSpec.describe Types::QueryType do
       olympian = OlympianAnalysisSchema.execute(query).as_json['data']['youngestOlympian']
       expect(olympian['id'].to_i).to eq(youngest.id)
     end
+
+    it "should return the youngest olympian" do
+      create(:olympian, age: 18)
+      oldest = create(:olympian, age: 30)
+      query = (
+        %(query {
+          oldestOlympian{
+            id
+            age
+          }
+          })
+      )
+      olympian = OlympianAnalysisSchema.execute(query).as_json['data']['oldestOlympian']
+      expect(olympian['id'].to_i).to eq(oldest.id)
+      expect(olympian['age'].to_i).to eq(oldest.age)
+    end
   end
 end
