@@ -15,7 +15,7 @@ This GraphQL API is designed to analyze data from the 2016 Summer Olympics.  Dep
 
 ### Setup
 To setup locally, run the following commands:
- - `git https://github.com/tbierwirth/olympian_analysis.git`
+ - `git clone https://github.com/tbierwirth/olympian_analysis.git`
  - `cd olympian_analysis`
  - `bundle install`
  - `rails db:{create,migrate}`
