@@ -58,4 +58,31 @@ describe "Olympians" do
     expect(olympian[:id].to_i).to eq(oldest.id)
     expect(olympian[:age].to_i).to eq(oldest.age)
   end
+
+  it "should return olympian stats" do
+    query = (
+      %(query {
+        olympianStats{
+          totalCompetingOlympians
+          averageAge
+          averageWeight{
+            unit
+            maleOlympians
+            femaleOlympians
+          }
+        }
+      })
+    )
+
+    post "/graphql", params: { "query" => query }.to_json, headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+
+    stats = JSON.parse(response.body, symbolize_names: true)[:data][:olympianStats]
+
+    expect(stats).to have_key(:totalCompetingOlympians)
+    expect(stats).to have_key(:averageAge)
+    expect(stats).to have_key(:averageWeight)
+    expect(stats[:averageWeight]).to have_key(:femaleOlympians)
+    expect(stats[:averageWeight]).to have_key(:maleOlympians)
+    expect(stats[:averageWeight]).to have_key(:unit)
+  end
 end
