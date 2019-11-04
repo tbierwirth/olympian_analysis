@@ -26,7 +26,7 @@ RSpec.describe Types::QueryType do
           youngestOlympian{
             id
           }
-          })
+        })
       )
       olympian = OlympianAnalysisSchema.execute(query).as_json['data']['youngestOlympian']
       expect(olympian['id'].to_i).to eq(youngest.id)
@@ -41,11 +41,35 @@ RSpec.describe Types::QueryType do
             id
             age
           }
-          })
+        })
       )
       olympian = OlympianAnalysisSchema.execute(query).as_json['data']['oldestOlympian']
       expect(olympian['id'].to_i).to eq(oldest.id)
       expect(olympian['age'].to_i).to eq(oldest.age)
+    end
+
+    it "should return average stats for olympians" do
+      query = (
+        %(query {
+          olympianStats{
+            totalCompetingOlympians
+            averageAge
+            averageWeight{
+              unit
+              maleOlympians
+              femaleOlympians
+            }
+          }
+        })
+      )
+      stats = OlympianAnalysisSchema.execute(query).as_json['data']['olympianStats']
+
+      expect(stats).to include("totalCompetingOlympians")
+      expect(stats).to include("averageWeight")
+      expect(stats).to include("averageAge")
+      expect(stats).to include("femaleOlympians")
+      expect(stats).to include("maleOlympians")
+      expect(stats).to include("unit")
     end
   end
 end
