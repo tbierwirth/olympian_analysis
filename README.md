@@ -11,7 +11,7 @@
 * [Project Board](#Project-Board)
 
 ### Introduction
-This GraphQL API is designed to analyze data from the 2016 Summer Olympics.  
+This GraphQL API is designed to analyze data from the 2016 Summer Olympics.  Deployed to Heroku [here](https://secure-temple-77119.herokuapp.com/).
 
 ### Setup
 To setup locally, run the following commands:
