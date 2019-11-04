@@ -31,5 +31,13 @@ module Types
     def olympian_stats
       {}
     end
+
+    field :sports, [Types::SportType], null: false do
+      description "Return all sports and their associated events"
+    end
+
+    def sports
+      Sport.all.includes(:events)
+    end
   end
 end

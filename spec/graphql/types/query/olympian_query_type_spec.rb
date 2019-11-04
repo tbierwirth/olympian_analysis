@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Types::QueryType do
-  describe 'users' do
+  describe 'Olympians' do
     it "should return all olympians" do
       5.times do
         create(:olympian)
