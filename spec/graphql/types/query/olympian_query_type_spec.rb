@@ -64,12 +64,12 @@ RSpec.describe Types::QueryType do
       )
       stats = OlympianAnalysisSchema.execute(query).as_json['data']['olympianStats']
 
-      expect(stats).to include("totalCompetingOlympians")
-      expect(stats).to include("averageWeight")
-      expect(stats).to include("averageAge")
-      expect(stats).to include("femaleOlympians")
-      expect(stats).to include("maleOlympians")
-      expect(stats).to include("unit")
+      expect(stats).to have_key("totalCompetingOlympians")
+      expect(stats).to have_key("averageAge")
+      expect(stats).to have_key("averageWeight")
+      expect(stats["averageWeight"]).to have_key("femaleOlympians")
+      expect(stats["averageWeight"]).to have_key("maleOlympians")
+      expect(stats["averageWeight"]).to have_key("unit")
     end
   end
 end
