@@ -20,4 +20,23 @@ describe "Olympians" do
     expect(response).to be_successful
     expect(olympians.length).to eq(5)
   end
+
+  it "should return the youngest olympian" do
+    youngest = create(:olympian, age: 18)
+    create(:olympian, age: 30)
+    query = (
+      %(query {
+        youngestOlympian{
+          id
+          age
+        }
+        })
+    )
+    post "/graphql", params: { "query" => query }.to_json, headers: { 'CONTENT_TYPE' => 'application/json', 'ACCEPT' => 'application/json' }
+
+    olympian = JSON.parse(response.body, symbolize_names: true)[:data][:youngestOlympian]
+
+    expect(olympian[:id].to_i).to eq(youngest.id)
+    expect(olympian[:age].to_i).to eq(youngest.age)
+  end
 end
