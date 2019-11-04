@@ -23,5 +23,13 @@ module Types
     def oldest_olympian
       Olympian.order(:age).last
     end
+
+    field :olympian_stats, Types::OlympianStatsType, null: false do
+      description "Return the average stats of olympians"
+    end
+
+    def olympian_stats
+      {}
+    end
   end
 end
